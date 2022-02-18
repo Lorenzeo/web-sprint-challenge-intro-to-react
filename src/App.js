@@ -2,21 +2,13 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Character from './components/Character';
-import Specifics from './components/Specifics'; 
-
+ 
 import './App.css';
 
 
 const App = () => {
   const [characters, setCharacters] = useState([]);
-  const [characterId, setCharacterId] = useState(null)
- 
-  const openSpecifics = id => {
-    setCharacterId(id)
-  }
-  const closeSpecifics = () =>{
-    setCharacterId(null)
-  }
+  
 
   useEffect(() => {
     axios.get('https://swapi.dev/api/people')
@@ -39,6 +31,7 @@ const App = () => {
   return (
     <div className="Root">
       <h1 className="Header">Characters</h1>
+      <Character characters={characters} />
     </div>
   );
 }
