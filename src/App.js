@@ -2,23 +2,32 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import Character from './components/Character';
+import Information from './components/Information'
+import Movies from './components/Movies'
  
 import './App.css';
 
-
 const App = () => {
   const [characters, setCharacters] = useState([]);
+  const [currentId, setCurrentId] = useState(null)
   
+  const openDetails = id =>{
+    setCurrentId(id)
+  }
+  const closeDetails = () =>{
+    setCurrentId(null)
+  }
 
   useEffect(() => {
     axios.get('https://swapi.dev/api/people')
     .then( res => {
-      console.log(res.data)
-      setCharacters(res.data)
-    })
+      setCharacters(res.data)})
     .catch(err => console.error(err))
   }, [])
 
+  
+  
+  
   // Try to think through what state you'll need for this app before starting. Then build out
   // the state properties here.
   
@@ -31,10 +40,20 @@ const App = () => {
   return (
     <div className="Root">
       <h1 className="Header">Characters</h1>
-      <Character characters={characters} />
+       
+       { characters.map(character => {
+          return <Information info={character} key={character.name} openDetails={openDetails} />
+       }) }
+      {
+        currentId && <Character  characters={characters} characterId={currentId} close={closeDetails} />
+      }
+      {
+        <Movies/>
+      }
+
     </div>
   );
 }
-
+ 
 
 export default App;

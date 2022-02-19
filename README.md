@@ -61,11 +61,11 @@ Your finished project must include all of the following requirements:
 
 After finishing your required elements, you can push your work further. These goals may or may not be things you have learned in this module but they build on the material you just studied. Time allowing, stretch your limits and see if you can deliver on any the following optional goals:
 
-- [ ] Make the Character component more complex and break it into several subcomponents.
-- [ ] Use the endpoint `[GET] https://swapi.dev/api/films` (mocked in msw) to obtain movie information to render with the characters.
-- [ ] Create a helper function in separate module to remove unneeded information from the API data, before putting it in state.
-- [ ] Create transitions or animations with styled-components.
-- [ ] Use Promise.all to resolve an array of promises.
+- [ x] Make the Character component more complex and break it into several subcomponents.
+- [x ] Use the endpoint `[GET] https://swapi.dev/api/films` (mocked in msw) to obtain movie information to render with the characters.
+- [x ] Create a helper function in separate module to remove unneeded information from the API data, before putting it in state.
+- [ x] Create transitions or animations with styled-components.
+- [ x] Use Promise.all to resolve an array of promises.
 
 ## Submission format
 
