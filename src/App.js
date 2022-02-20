@@ -22,8 +22,9 @@ const App = () => {
     axios.get('https://swapi.dev/api/people')
     .then( res => {
       setCharacters(res.data)})
+      
     .catch(err => console.error(err))
-  }, [])
+  }, [currentId])
 
   
   
@@ -42,10 +43,10 @@ const App = () => {
       <h1 className="Header">Characters</h1>
        
        { characters.map(character => {
-          return <Information info={character} key={character.name} openDetails={openDetails} />
+          return <Information  info={character} key={character.name} openDetails={openDetails} />
        }) }
-      {
-        currentId && <Character  characters={characters} characterId={currentId} close={closeDetails} />
+      { 
+        currentId && <Character key={characters.name} characters={characters} characterId={currentId} close={closeDetails} />
       }
       {
         <Movies/>

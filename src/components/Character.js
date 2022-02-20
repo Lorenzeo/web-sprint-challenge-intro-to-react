@@ -38,29 +38,25 @@ const StyledDetails = styled.div`
 
 export default function Character(props){
     //setting up props and state
-    const {close, characterId} = props
-    const[information, setInformation] = useState(null)
-     
-    useEffect(() => {
-        axios.get('https://swapi.dev/api/people')
-        .then( res => {
-          setInformation(res.data);
-          const information = res.data.map(inf =>{
-              return inf
-          })
-        })
-        .catch(err => console.error(err))
-      }, [characterId])
+    const {close, characterId, characters} = props
+
+
+    
+    
  
 
     return( 
         <StyledDetails className ='container'>
-            <h2>Information on {characterId}</h2>
             {
-                information &&
-                <> 
-                <p>{information.name} is {information.age}</p>
-                </>
+            characters.map(character =>{
+                return (
+                    <article>
+                        <h2>Information on {characterId}</h2>
+                        <p>{character.name} is {character.height} tall with a mass of {character.mass}</p>
+                        <p>{character.name} also has a skin color of {character.skin_color} with a {character.birth_year}</p>
+                    </article>
+                )
+            })
             }
            
        <button onClick={close}>Close</button>
